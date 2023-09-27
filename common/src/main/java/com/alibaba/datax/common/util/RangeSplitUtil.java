@@ -11,6 +11,30 @@ import java.util.*;
  */
 public final class RangeSplitUtil {
 
+    public static String[] doG62StringSplit(String left, String right, int expectSliceNumber) {
+        int bigLength = Math.max(left.length(), right.length());
+        if (left.length() > right.length()) {
+            right = String.format("%"+bigLength+"s", right).replace(" ", "0");
+        }
+
+        BigInteger[] tempResult = doBigIntegerSplit(G62Util.string2BigInteger(left), G62Util.string2BigInteger(right), expectSliceNumber);
+        String[] result = new String[tempResult.length];
+
+        result[0] = left;
+        result[tempResult.length - 1] = right;
+
+        String tempStr;
+        for (int i = 1, len = tempResult.length -1; i < len; i++) {
+            tempStr = G62Util.bigInteger2String(tempResult[i]);
+            if (tempStr.length() < bigLength) {
+                result[i] = String.format("%"+bigLength+"s", tempStr.replace(" ", "0"));
+            } else {
+                result[i] = tempStr;
+            }
+        }
+        return result;
+    }
+
     public static String[] doAsciiStringSplit(String left, String right, int expectSliceNumber) {
         int radix = 128;
 
