@@ -50,11 +50,15 @@
         <module>streamreader</module>
         <module>postgresqlreader</module>
         <module>gaussdbreader</module>
+        <module>mysqlreader</module>
+        <module>oceanbasev10reader</module>
 
         <!-- writer -->
         <module>streamwriter</module>
         <module>postgresqlwriter</module>
         <module>gaussdbwriter</module>
+        <module>mysqlwriter</module>
+        <module>oceanbasev10writer</module>
         <module>elasticsearchwriter</module>
 
         <!-- common support module -->
